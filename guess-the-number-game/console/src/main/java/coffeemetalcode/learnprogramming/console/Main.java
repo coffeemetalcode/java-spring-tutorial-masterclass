@@ -1,8 +1,6 @@
 package coffeemetalcode.learnprogramming.console;
 
-import coffeemetalcode.learnprogramming.config.AppConfig;
-import coffeemetalcode.learnprogramming.MessageGenerator;
-import coffeemetalcode.learnprogramming.NumberGenerator;
+import coffeemetalcode.learnprogramming.config.GameConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.ConfigurableApplicationContext;
@@ -17,22 +15,8 @@ public class Main {
         // log.debug("Debug The Number Game"); // <- log a message at the debug level
 
         /* create context (container) */
-        ConfigurableApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
+        ConfigurableApplicationContext context = new AnnotationConfigApplicationContext(GameConfig.class);
 
-        /* get number generator from context (container) */
-        NumberGenerator numberGenerator = context.getBean(NumberGenerator.class);
-
-        /* call next() method to get a random number */
-        int number = numberGenerator.next();
-
-        /* log number */
-        log.info("number: {}", number);
-
-        /* get message generator bean from context (container) */
-        MessageGenerator messageGenerator = context.getBean(MessageGenerator.class);
-
-        log.info("getMainMessage = {}", messageGenerator.getMainMessage());
-        log.info("getResultMessage = {}", messageGenerator.getResultMessage());
         /* close context */
         context.close();
     }
